@@ -1,0 +1,46 @@
+<div class="card mt-3">
+  <div class="card-body">
+    <h5 class="card-title text-center">Agregar Persona</h5>
+    <form (ngSubmit)="agregarPersona()" #form="ngForm">
+
+      <div class="form-group">
+        <small id="helpId" class="form-text text-muted">Nombre</small>
+        <input type="text" class="form-control" name="Nombre" required minlength="2" [(ngModel)]="Nombre" >
+        <div *ngIf="Nombre.length<=3 && !Nombre.valid " class="alert alert-info" role="alert">
+          Nombre mínimo 4 letras
+        </div>
+        <small id="helpId" class="form-text text-muted">Apellido Paterno</small>
+        <input type="text" class="form-control" name="Apellido_P" required minlength="3" [(ngModel)]="Apellido_P"  required>
+        <div *ngIf="Apellido_P.length<=3 && !Apellido_P.valid " class="alert alert-info" role="alert">
+          Apellido mínimo 4 letras
+        </div>
+        <small id="helpId" class="form-text text-muted">Apellido Materno</small>
+        <input type="text" class="form-control" name="Apellido_M" required minlength="3" [(ngModel)]="Apellido_M" required>
+        <div *ngIf="Apellido_M.length<=3 && !Apellido_M.valid " class="alert alert-info" role="alert">
+          Apellido mínimo 4 letras
+        </div>
+
+        <small id="helpId" class="form-text text-muted">Edad</small>
+        <input type="text" class="form-control" name="Edad"  inputmode="numeric" pattern="[0-9]*" digitOnly maxlength="3" [(ngModel)]="Edad" required>
+        <div *ngIf="Edad.length<=1 && !Edad.valid " class="alert alert-info" role="alert">
+          Solo números
+        </div>
+
+        <small id="helpId" class="form-text text-muted">Sexo</small>
+        <select name="Sexo" [(ngModel)]="Sexo" class="form-control" required>
+          <option value="Mujer">Mujer</option>
+          <option value="Hombre">Hombre</option>
+          <option value="No Selectivo">No Selectivo</option>
+        </select>
+
+        <small id="helpId" class="form-text text-muted">Correo</small>
+        <input type="text" class="form-control" name="Correo" [ngClass]="{'is-invalid': form.submitted && Correo.invalid}" [(ngModel)]="Correo"  email required>
+
+
+
+        <button type="submit" [disabled]="!form.form.valid"  class="btn btn-primary btn-lg btn-block mt-3">Agregar</button>
+
+      </div>
+    </form>
+  </div>
+</div>
